@@ -1,6 +1,6 @@
 import {LOGIN_PAGE, TENDERS_PAGE} from "./consts";
 import {LoginPage} from "./Components/Pages/LoginPage/LoginPage";
-import {TendersPage} from "./Components/Pages/TendersPage/TendersPage";
+import {TendersPageContainer} from "./Components/Pages/TendersPage/TendersPage";
 
 export const AllRouters = [
     {
@@ -9,7 +9,7 @@ export const AllRouters = [
     },
     {
         path: TENDERS_PAGE,
-        Component:<TendersPage/>
+        Component:<TendersPageContainer/>
     }
 
 ]
