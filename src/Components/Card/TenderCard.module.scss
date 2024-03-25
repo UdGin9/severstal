@@ -1,0 +1,78 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.tenderCard {
+    background-color: #f0f8ff; /* Светло-голубой цвет фона */
+    border: 1px solid #00008b; /* Синий цвет границы */
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.tenderHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #add8e6;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding-left: 0px;
+}
+
+.tenderNumber,
+.tenderStatus,
+.tenderType,
+.tenderTitle,
+.tenderRegions,
+.tenderCustomers,
+.tenderOperator,
+.tenderText,
+.tenderApplicationDeadline,
+.tenderPublicationDate {
+    font-size: 14px;
+    color: #00008b;
+    margin-left: 40px;
+}
+.tenderStartPrice{
+    font-size: 28px;
+    color: #00008b;
+    margin-left: 10px;
+}
+
+.tenderTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tenderDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: auto;
+}
+.tenderDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #99A0A8;
+    font-size: 14px;
+}
+
+
+.tenderInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+    border-left: 1px solid #00008b;
+    padding-left: 10px;
+    margin-left: 10px;
+}
