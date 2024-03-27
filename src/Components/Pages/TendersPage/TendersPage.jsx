@@ -20,6 +20,7 @@ const TendersPage = ({Tenders}) => {
 const mapStateToProps = (state) => ({
     Tenders: state.Tenders,
     isFetching: state.isFetching,
+    names : state.names,
 })
 
 export const TendersPageContainer = connect(mapStateToProps,{toggleIsFetching})(TendersPage)
