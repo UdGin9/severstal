@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import s from "../Card/TenderCards.module.scss";
+import {useDispatch} from "react-redux";
+import {setFull} from "../redux/reducer";
 
-const FilterBlock = () => {
+const FilterBlock = ({FullState}) => {
     const [keyword, setKeyword] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -10,14 +13,16 @@ const FilterBlock = () => {
     const [savedFilters, setSavedFilters] = useState([]);
     const [file, setFile] = useState(null);
 
+
     const handleSearch = () => {
-        // Handle search functionality here
+
     };
+
 
     const handleFileUpload = (event) => {
         const uploadedFile = event.target.files[0];
         setFile(uploadedFile);
-        // Handle file upload functionality here
+
     };
 
 
@@ -54,15 +59,15 @@ const FilterBlock = () => {
                     checked={searchSimilar}
                     onChange={() => setSearchSimilar(!searchSimilar)}
                 />
-                Search Similar
+                Искать похожие
             </label>
             <select
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
             >
-                <option value="all">All</option>
-                <option value="archived">Archived</option>
-                <option value="current">Current</option>
+                <option value="all">Все</option>
+                <option value="archived">Недоступные</option>
+                <option value="current">Доступные</option>
             </select>
             <input
                 type="text"
@@ -70,16 +75,16 @@ const FilterBlock = () => {
                 value={excludedKeywords}
                 onChange={(e) => setExcludedKeywords(e.target.value)}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch}>Искать</button>
             <input
                 type="file"
                 accept=".csv,.xlsx,.xls"
                 onChange={handleFileUpload}
             />
-            {/* Display saved filters */}
             {savedFilters.map((filter, index) => (
                 <div key={index}>{filter}</div>
             ))}
+
         </div>
     );
 };

@@ -1,53 +1,52 @@
-import {DOWNLOAD_TENDERS,TOGGLE_IS_FETCHING,DOWNLOAD_NAME} from "../../consts";
-
+import {DOWNLOAD_TENDERS, TOGGLE_IS_FETCHING, DOWNLOAD_NAME, STATE_FULL} from "../../consts";
 
 const initialState = {
     Tenders: [
     {
-        number: 1,
+        id: 1,
         status: "Подача заявок",
-        tenderType: "Торги без ЭП",
+        stage: "Торги без ЭП",
         title: "Поставка оборудования (Микроскоп цифровой) в целях создания на базе общеобразовательных организаций детских технопарков \"Кванториум\" в рамках регионального проекта \"Современная школа (Астраханская область)",
-        tenderLink: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
+        link: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
         type: "Ценовой запрос",
-        regions: "Саратовская область",
-        customers: "ГАУЗ ЭГКБ № 1",
-        operator: "ТЗП Татнефть",
+        regionName: "Саратовская область",
+        company: "ГАУЗ ЭГКБ № 1",
+        sourceName: "ТЗП Татнефть",
         startPrice: 310000,
-        applicationDeadline: "25 марта 2024",
-        publicationDate: "15 марта 2024"
+        publicationDateTime: "25 марта 2024",
+        deadlineDateTime: "15 марта 2024"
     },
     {
-        number: 2,
+        id: 2,
         status: "Подача заявок",
-        tenderType: "Торги без ЭП",
+        stage: "Торги без ЭП",
         title: "Поставка оборудования (Микроскоп цифровой) в целях создания на базе общеобразовательных организаций детских технопарков \"Кванториум\" в рамках регионального проекта \"Современная школа (Астраханская область)",
-        tenderLink: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
+        link: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
         type: "Ценовой запрос",
-        regions: "Саратовская область",
-        customers: "ГАУЗ ЭГКБ № 1",
-        operator: "ТЗП Татнефть",
+        regionName: "Саратовская область",
+        company: "ГАУЗ ЭГКБ № 1",
+        sourceName: "ТЗП Татнефть",
         startPrice: 310000,
-        applicationDeadline: "25 марта 2024",
-        publicationDate: "15 марта 2024"
+        publicationDateTime: "25 марта 2024",
+        deadlineDateTime: "15 марта 2024"
     },
         {
-            number: 3,
+            id: 3,
             status: "Подача заявок",
-            tenderType: "Торги без ЭП",
+            stage: "Торги без ЭП",
             title: "Поставка оборудования (Микроскоп цифровой) в целях создания на базе общеобразовательных организаций детских технопарков \"Кванториум\" в рамках регионального проекта \"Современная школа (Астраханская область)",
-            tenderLink: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
+            link: "https://etpgpb.ru/procedure/tender/price_request/590295-postavka-oborudovaniya-mikroskop-tsifrovoy-v-tselyah-sozdaniya-na-baze-obscheobrazovatelnyh-organizatsiy-detskih-/",
             type: "Ценовой запрос",
-            regions: "Саратовская область",
-            customers: "ГАУЗ ЭГКБ № 1",
-            operator: "ТЗП Татнефть",
+            regionName: "Саратовская область",
+            company: "ГАУЗ ЭГКБ № 1",
+            sourceName: "ТЗП Татнефть",
             startPrice: 310000,
-            applicationDeadline: "25 марта 2024",
-            publicationDate: "15 марта 2024"
+            publicationDateTime: "25 марта 2024",
+            deadlineDateTime: "15 марта 2024"
         },
 
     ],
-    isFetching: false,
+
     names : [
         {
             "id": 1,
@@ -93,7 +92,9 @@ const initialState = {
             "link": "htpp://vor",
             "description": "В данном доку..."
         }
-    ]
+    ],
+    isFetching: false,
+    FullState : false,
 }
 
 
@@ -106,6 +107,8 @@ export const Reducer = (state = initialState, action) => {
             return {...state, isFetching: action.isFetching}
         case DOWNLOAD_NAME:
             return {...state, isFetching: action.isFetching}
+        case STATE_FULL:
+            return {...state, FullState: !action.FullState}
         default:
             return state
     }
@@ -114,3 +117,5 @@ export const Reducer = (state = initialState, action) => {
 export const downloadTenders = (Tenders) => ({type: DOWNLOAD_TENDERS, Tenders})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const downloadNames = (names) => ({type: DOWNLOAD_NAME,names})
+export const setFull = (FullState) => ({type: STATE_FULL,FullState})
+

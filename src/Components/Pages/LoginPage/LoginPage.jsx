@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import s from "./LoginPage.module.scss"
 import {TENDERS_PAGE} from "../../../consts";
-import {connect} from "react-redux";
-import {toggleIsFetching} from "../../redux/reducer";
+import {connect, useDispatch} from "react-redux";
+import {downloadTenders, toggleIsFetching} from "../../redux/reducer";
+import axios from "axios";
 
-const LoginPage = ({names}) => {
+const LoginPage = ({names,Tenders}) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleNameChange = (event) => {
@@ -13,8 +15,10 @@ const LoginPage = ({names}) => {
 
     const handleSkipOrGoNext = () => {
         navigate(TENDERS_PAGE);
-        // Сохранение имя в редакс и отправляем на сервер, получаем имена
+        dispatch(toggleIsFetching(true))
     };
+
+
 
     return (
         <div className={s.page}>

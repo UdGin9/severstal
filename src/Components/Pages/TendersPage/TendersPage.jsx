@@ -4,15 +4,19 @@ import TenderCards from "../../Card/TenderCards";
 import {connect} from "react-redux";
 import {toggleIsFetching} from "../../redux/reducer";
 import Loader from "../../../UI/loader";
-const TendersPage = ({Tenders}) => {
+import Filters from "../../Filters/Filters";
+
+const TendersPage = ({Tenders,isFetching,FullState}) => {
+
 
     return (
         <div>
             <Header/>
-            {Tenders ? <div>
+            <Filters/>
+            {isFetching ? <Loader/> : <div>
                 <TenderCards tenders={Tenders} />
                 {/*<Paginator pages={pages} pressHandler={changePage} page={currentPage} next={next} prev={prev}/>*/}
-            </div> : <Loader/>}
+            </div>}
         </div>
     );
 }
@@ -21,6 +25,7 @@ const mapStateToProps = (state) => ({
     Tenders: state.Tenders,
     isFetching: state.isFetching,
     names : state.names,
+    FullState: state.FullState,
 })
 
 export const TendersPageContainer = connect(mapStateToProps,{toggleIsFetching})(TendersPage)
